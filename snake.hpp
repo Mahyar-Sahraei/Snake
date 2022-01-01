@@ -9,6 +9,7 @@ private:
     int snakeLength = 1;
     sf::Vector2f headPosition;
     sf::Vector2f headDirection;
+    Obj name = Obj::Snake;
 public:
     Snake(sf::Vector2f position, sf::VertexArray shape) :
         Object(position, shape) {}

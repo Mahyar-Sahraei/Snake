@@ -1,11 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+enum class Obj { Empty = 0, Stone, Fruit, Snake };
+
 class Object
 {
 protected:
 	sf::Vector2f position;
 	sf::VertexArray shape;
+	Obj name = Obj::Empty;
 public:
 	void render();
 	Object(sf::Vector2f position, sf::VertexArray shape) {
@@ -17,15 +20,3 @@ public:
 	void setPosition(sf::Vector2f);
 	void move(sf::Vector2f);
 };
-
-sf::Vector2f Object::getPosition() {
-	return position;
-}
-void Object::setPosition(sf::Vector2f newPosition) {
-	position = newPosition;
-	render();
-}
-void Object::move(sf::Vector2f motiontVector) {
-	position += motiontVector;
-	render;
-}

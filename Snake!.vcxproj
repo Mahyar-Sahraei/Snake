@@ -147,14 +147,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="board.cpp" />
+    <ClCompile Include="fruit.cpp" />
+    <ClCompile Include="initializer.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="snake.cpp" />
+    <ClCompile Include="stone.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.hpp" />
+    <ClInclude Include="fruit.hpp" />
     <ClInclude Include="initializer.hpp" />
     <ClInclude Include="object.hpp" />
     <ClInclude Include="snake.hpp" />
+    <ClInclude Include="stone.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

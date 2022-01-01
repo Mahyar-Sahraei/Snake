@@ -5,14 +5,23 @@
 
 class Board {
 private:
-    std::array<bool, B_SIZE> state = { false };
+    std::array<std::array<Obj, B_SIZE>, B_SIZE> stateMap = { Obj::Empty };
+    int boardLength = B_SIZE;
 public:
-    Board(std::vector<Object> objects) {
+    Board(std::vector<Obj> objects) {
+        Initializer<int> initializer;
+        unsigned int index = 0;
         for (auto object : objects) {
-            placeObject(object, true);
+            auto RandList = initializer.getRandomList(0, B_SIZE, 2);
+            if (placeObject(object,sf::Vector2i(RandList[0], RandList[1])));
         }
     }
-    void placeObject(Object, bool);
-    bool getState(sf::Vector2i);
+    bool placeObject(Obj objectName, sf::Vector2i headPostion, int length = 1);
+    bool isOccupied(sf::Vector2i position);
+    bool placeSnake(sf::Vector2i position);
+    bool placeStone(sf::Vector2i position, int length);
+    bool placeFruit(sf::Vector2i position);
+    void emptySquare(sf::Vector2i position);
+    int getLength();
 };
 
