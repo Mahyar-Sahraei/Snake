@@ -1,23 +1,26 @@
-#include "board.hpp"
-#include "initializer.hpp"
+#include "HeaderFiles/board.hpp"
+#include "HeaderFiles/initializer.hpp"
 
-Board::Board(std::vector<Obj> objects) {
+Board::Board(std::vector<Object> objects) {
 	Initializer initializer;
-	unsigned int index = 0;
 	for (auto object : objects) {
-		auto RandList = initializer.getRandomList(0, B_SIZE, 2);
-		if (placeObject(object, sf::Vector2i(RandList[0], RandList[1])));
+		while (true) {
+			auto rand = initializer.getRandomList(0, B_SIZE - 1, 2);
+			if (placeObject(object.getType(), sf::Vector2i(rand[0], rand[1]))) {
+				break;
+			}
+		}
 	}
 }
 
-bool Board::placeObject(Obj objectName, sf::Vector2i headPostion, int length) {
+bool Board::placeObject(Obj objectName, sf::Vector2i headPostion) {
 	switch (objectName)
 	{
 	case Obj::Empty:
 		return emptySquare(headPostion);
 		break;
 	case Obj::Stone:
-		return placeStone(headPostion, length);
+		return placeStone(headPostion);
 		break;
 	case Obj::Fruit:
 		return placeFruit(headPostion);
@@ -30,7 +33,7 @@ bool Board::placeObject(Obj objectName, sf::Vector2i headPostion, int length) {
 	}
 }
 
-bool Board::isOccupied(sf::Vector2i position) {
+bool Board::isEmpty(sf::Vector2i position) {
 	return stateMap[position.x][position.y] == Obj::Empty;
 }
 
@@ -39,14 +42,17 @@ bool Board::emptySquare(sf::Vector2i position) {
 	return true;
 }
 
-bool Board::placeStone(sf::Vector2i position, int length) {
+bool Board::placeStone(sf::Vector2i position) {
 	int placedStones = 0;
 	Initializer initializer;
-	auto direction = initializer.getRandomList(1, 4)[0];
+	int length = initializer.getRandomList(3, 5)[0];
+	int direction = initializer.getRandomList(1, 3)[0];
 	for (int i = 0; i < length; i++) {
-		if (!isOccupied(position)) {
+		if (isEmpty(position)) {
 			stateMap[position.x][position.y] = Obj::Stone;
 			placedStones++;
+			direction == 1 ? position.x++ : position.y++;
+			if (position.x >= B_SIZE || position.y >= B_SIZE) break;
 		}
 	}
 	if (placedStones == 0) return false;
@@ -54,7 +60,7 @@ bool Board::placeStone(sf::Vector2i position, int length) {
 }
 
 bool Board::placeFruit(sf::Vector2i position) {
-	if (!isOccupied(position)) {
+	if (isEmpty(position)) {
 		stateMap[position.x][position.y] = Obj::Fruit;
 		return true;
 	}
@@ -62,7 +68,7 @@ bool Board::placeFruit(sf::Vector2i position) {
 }
 
 bool Board::placeSnake(sf::Vector2i position) {
-	if (!isOccupied(position)) {
+	if (isEmpty(position)) {
 		stateMap[position.x][position.y] = Obj::Snake;
 		return true;
 	}

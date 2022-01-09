@@ -1,8 +1,9 @@
 #pragma once
 #include "object.hpp"
 
-class fruit : public Object {
+class Fruit : public Object{
 	bool isEaten = false;
-	Obj name = Obj::Fruit;
+public:
+	Fruit();
 };
 

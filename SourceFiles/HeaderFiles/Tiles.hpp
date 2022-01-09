@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "board.hpp"
 #define WIDTH 200
-#define T_SIZE 80
+#define T_SIZE 50
 
 class Tiles : public sf::Drawable {
 private:
@@ -39,9 +39,9 @@ public:
 		vertices.setPrimitiveType(sf::Quads);
 		std::pair<Obj, sf::Vector2f>
 			snake(Obj::Snake, sf::Vector2f(0, 0)),
-			stone(Obj::Stone, sf::Vector2f(300, 0)),
+			stone(Obj::Stone, sf::Vector2f(0, 300)),
 			fruit(Obj::Fruit, sf::Vector2f(285, 300)),
-			board(Obj::Empty, sf::Vector2f(0, 300));
+			board(Obj::Empty, sf::Vector2f(300, 0));
 		texPositions.insert({snake, stone, fruit, board});
 	}
 	void load(vector<vector<Obj>> stateMap) {

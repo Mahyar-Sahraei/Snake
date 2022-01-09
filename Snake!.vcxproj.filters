@@ -5,64 +5,63 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="HeaderFiles">
+      <UniqueIdentifier>{7166e025-8740-433b-9e47-0ee77bafae61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="object.cpp">
+    <ClCompile Include="SourceFiles\board.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="snake.cpp">
+    <ClCompile Include="SourceFiles\fruit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="board.cpp">
+    <ClCompile Include="SourceFiles\initializer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="fruit.cpp">
+    <ClCompile Include="SourceFiles\object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="initializer.cpp">
+    <ClCompile Include="SourceFiles\snake.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stone.cpp">
+    <ClCompile Include="SourceFiles\stone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainWin.cpp">
+    <ClCompile Include="SourceFiles\MainWin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="object.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="snake.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="initializer.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="board.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="fruit.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stone.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tiles.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="images.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SourceFiles\HeaderFiles\object.hpp">
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFiles\HeaderFiles\board.hpp">
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFiles\HeaderFiles\fruit.hpp">
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFiles\HeaderFiles\initializer.hpp">
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFiles\HeaderFiles\snake.hpp">
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFiles\HeaderFiles\stone.hpp">
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceFiles\HeaderFiles\Tiles.hpp">
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
