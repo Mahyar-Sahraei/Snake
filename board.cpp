@@ -1,49 +1,55 @@
 #include "board.hpp"
 #include "initializer.hpp"
 
-bool Board::isOccupied(sf::Vector2i position) {
-	return stateMap[position.x][position.y] == Obj::Empty;
+Board::Board(std::vector<Obj> objects) {
+	Initializer initializer;
+	unsigned int index = 0;
+	for (auto object : objects) {
+		auto RandList = initializer.getRandomList(0, B_SIZE, 2);
+		if (placeObject(object, sf::Vector2i(RandList[0], RandList[1])));
+	}
 }
 
 bool Board::placeObject(Obj objectName, sf::Vector2i headPostion, int length) {
 	switch (objectName)
 	{
 	case Obj::Empty:
-		emptySquare(headPostion);
+		return emptySquare(headPostion);
 		break;
 	case Obj::Stone:
-		placeStone(headPostion, length);
+		return placeStone(headPostion, length);
 		break;
 	case Obj::Fruit:
-		placeFruit(headPostion);
+		return placeFruit(headPostion);
 		break;
 	case Obj::Snake:
-		placeSnake(headPostion);
+		return placeSnake(headPostion);
 		break;
 	default:
 		break;
 	}
 }
 
-int Board::getLength() {
-	return boardLength;
+bool Board::isOccupied(sf::Vector2i position) {
+	return stateMap[position.x][position.y] == Obj::Empty;
 }
 
-void Board::emptySquare(sf::Vector2i position) {
+bool Board::emptySquare(sf::Vector2i position) {
 	stateMap[position.x][position.y] = Obj::Empty;
+	return true;
 }
 
 bool Board::placeStone(sf::Vector2i position, int length) {
-	int placedCount = 0;
-	Initializer<int> dirInit; 
-	dirInit.getRandomList(1, 2);
+	int placedStones = 0;
+	Initializer initializer;
+	auto direction = initializer.getRandomList(1, 4)[0];
 	for (int i = 0; i < length; i++) {
 		if (!isOccupied(position)) {
 			stateMap[position.x][position.y] = Obj::Stone;
-			placedCount++;
+			placedStones++;
 		}
 	}
-	if (placedCount == 0) return false;
+	if (placedStones == 0) return false;
 	return true;
 }
 

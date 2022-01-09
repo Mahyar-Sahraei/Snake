@@ -3,5 +3,7 @@
 
 class Stone : public Object {
 	Obj name = Obj::Stone;
+public:
+	Stone();
 };
 

@@ -33,6 +33,9 @@
     <ClCompile Include="stone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MainWin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="object.hpp">
@@ -53,5 +56,13 @@
     <ClInclude Include="stone.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Tiles.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="images.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
