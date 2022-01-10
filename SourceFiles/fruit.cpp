@@ -3,3 +3,7 @@
 Fruit::Fruit() : Object(Obj::Fruit) {
 	return;
 }
+
+void Fruit::changePlace() {
+
+}

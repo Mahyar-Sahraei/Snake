@@ -5,5 +5,6 @@ class Stone : public Object{
 	Body body;
 public:
 	Stone();
+    void changePlace();
 };
 

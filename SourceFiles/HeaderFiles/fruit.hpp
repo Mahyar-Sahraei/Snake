@@ -5,5 +5,6 @@ class Fruit : public Object{
 	bool isEaten = false;
 public:
 	Fruit();
+    void changePlace();
 };
 

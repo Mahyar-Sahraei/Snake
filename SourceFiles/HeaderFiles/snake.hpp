@@ -12,5 +12,6 @@ public:
     Snake();
     bool isAlive();
     void move(Body *body);
+    void increaseSnakeLength();
 };
 

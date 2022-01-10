@@ -18,3 +18,7 @@ void Snake::move(Body *body) {
 
 	}
 }
+
+void Snake::increaseSnakeLength() {
+    snakeLength++;
+}
