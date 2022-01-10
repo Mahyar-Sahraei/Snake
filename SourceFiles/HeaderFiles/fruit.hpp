@@ -2,9 +2,10 @@
 #include "object.hpp"
 
 class Fruit : public Object{
-	bool isEaten = false;
+    bool isEaten = false;
 public:
-	Fruit();
+    Fruit();
     void changePlace();
+    boole getEaten();
+    void setEaten():
 };
-
