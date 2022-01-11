@@ -11,7 +11,8 @@ private:
 
 public:
     Menu(float width, float length);
-    void moveUpWhiteKeyboard();
+    void moveUpWithKeyboard();
     void moveDownWhiteKeyboard();
     void drawWindow(sf::RenderWindow &window);
+    int getPressedItem() { return selectedItem; } //if returned 0 start the game, else if returned 1, exit;
 };

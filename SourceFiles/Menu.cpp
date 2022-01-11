@@ -16,7 +16,7 @@ Menu::Menu(float width, float length) {
     text[1].setString("Exit");
 }
 
-void Menu::moveUpWhiteKeyboard() {
+void Menu::moveUpWithKeyboard() {
     if (selectedItem > 0) {
         text[selectedItem].setColor(sf::Color::White);
         selectedItem--;

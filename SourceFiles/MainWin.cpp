@@ -3,6 +3,7 @@
 #include "HeaderFiles/snake.hpp"
 #include "HeaderFiles/stone.hpp"
 #include "HeaderFiles/fruit.hpp"
+#include "Menu.hpp"
 
 int main() {
 	sf::RenderWindow mainWin(sf::VideoMode(B_SIZE * T_SIZE, B_SIZE * T_SIZE), "Snake!");
@@ -16,9 +17,40 @@ int main() {
 	while (mainWin.isOpen()) {
 		sf::Event event;
 		while (mainWin.pollEvent(event)) {
-			if (event.type == sf::Event::Closed) {
-				mainWin.close();
-			}
+            sf::Event event;
+            while (mainWin.pollEvent(event)) {
+                switch (event.type) {
+                    case sf::Event::Closed:
+                        mainWin.close();
+                        break;
+
+                    case sf::Event::KeyReleased:
+                        switch (event.key.code) {
+                            case sf::Keyboard::Escape:
+                                mainWin.close();
+                                break;
+
+                            case sf::Keyboard::Up:
+                                menu.moveUpWithKeyboard();
+                                break;
+
+                            case sf::Keyboard::Down:
+                                menu.moveDownWhiteKeyboard();
+                                break;
+
+                            case sf::Keyboard::Return:
+                                switch (menu.getPressedItem()) {
+                                    case 0:
+                                        //start game
+                                        break;
+                                    case 1:
+                                        mainWin.close();
+                                        break;
+                                }
+                                break;
+                        }
+                        break;
+                }
 		}
 		map.load(board.stateMap);
 		mainWin.clear(sf::Color::Black);
