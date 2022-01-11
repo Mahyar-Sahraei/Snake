@@ -13,5 +13,5 @@ bool Fruit::getEaten() {
 }
 
 void Fruit::setEaten() {
-    isEaten= true;
+    isEaten = true;
 }
