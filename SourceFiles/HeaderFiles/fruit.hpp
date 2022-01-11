@@ -6,6 +6,6 @@ class Fruit : public Object{
 public:
     Fruit();
     void changePlace();
-    boole getEaten();
-    void setEaten():
+    bool getEaten();
+    void setEaten();
 };
