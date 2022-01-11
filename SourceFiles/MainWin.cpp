@@ -6,17 +6,18 @@
 #include "Menu.hpp"
 
 int main() {
-	sf::RenderWindow mainWin(sf::VideoMode(B_SIZE * T_SIZE, B_SIZE * T_SIZE), "Snake!");
-	mainWin.setFramerateLimit(1);
-	Snake snake1, snake2;
-	Stone stone;
-	Fruit fruit;
-	Board board({ snake1, snake2, stone, fruit });
-	Tiles map;
-	map.load(board.stateMap);
-	while (mainWin.isOpen()) {
-		sf::Event event;
-		while (mainWin.pollEvent(event)) {
+    sf::RenderWindow mainWin(sf::VideoMode(B_SIZE * T_SIZE, B_SIZE * T_SIZE), "Snake!");
+    mainWin.setFramerateLimit(1);
+    Menu menu(mainWin.getSize().x, mainWin.getSize().y);
+    Snake snake1, snake2;
+    Stone stone;
+    Fruit fruit;
+    Board board({snake1, snake2, stone, fruit});
+    Tiles map;
+    map.load(board.stateMap);
+    while (mainWin.isOpen()) {
+        sf::Event event;
+        while (mainWin.pollEvent(event)) {
             sf::Event event;
             while (mainWin.pollEvent(event)) {
                 switch (event.type) {
@@ -51,10 +52,11 @@ int main() {
                         }
                         break;
                 }
-		}
-		map.load(board.stateMap);
-		mainWin.clear(sf::Color::Black);
-		mainWin.draw(map);
-		mainWin.display();
-	}
+            }
+            map.load(board.stateMap);
+            mainWin.clear(sf::Color::Black);
+            mainWin.draw(map);
+            mainWin.display();
+        }
+    }
 }
