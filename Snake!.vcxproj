@@ -151,6 +151,7 @@
     <ClCompile Include="SourceFiles\MainWin.cpp" />
     <ClCompile Include="SourceFiles\object.cpp" />
     <ClCompile Include="SourceFiles\snake.cpp" />
+    <ClCompile Include="SourceFiles\windows.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="images.png" />
@@ -161,6 +162,7 @@
     <ClInclude Include="SourceFiles\HeaderFiles\object.hpp" />
     <ClInclude Include="SourceFiles\HeaderFiles\snake.hpp" />
     <ClInclude Include="SourceFiles\HeaderFiles\Tiles.hpp" />
+    <ClInclude Include="SourceFiles\HeaderFiles\windows.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
