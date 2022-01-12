@@ -15,7 +15,7 @@ private:
     SNAKES_POS placeObject(std::vector<Obj> objects, MAP& stateMap) {
         SNAKES_POS snakesPos;
         for (auto object : objects) {
-        auto randPos = getRandomList(0, B_SIZE, 2);
+        auto randPos = getRandomList(0, B_SIZE - 1, 2);
             switch (object) {
             case Obj::Stone:
                 placeStone(stateMap, randPos);
@@ -40,15 +40,15 @@ private:
     }
     sf::Vector2f placeSnake(MAP& stateMap, std::vector<int> position, Obj which) {
         while (!isEmpty(stateMap, position)) {
-            position = getRandomList(0, B_SIZE, 2);
+            position = getRandomList(0, B_SIZE - 1, 2);
         }
         stateMap[position[0]][position[1]] = which;
         return sf::Vector2f(position[0], position[1]);
     }
     void placeStone(MAP& stateMap, std::vector<int> position) {
         bool placedStones = false;
-        int length =getRandomList(3, 5)[0];
-        int direction = getRandomList(1, 3)[0];
+        int length =getRandomList(3, 4)[0];
+        int direction = getRandomList(1, 2)[0];
         for (int i = 0; i < length; i++) {
             if (isEmpty(stateMap, position)) {
                 stateMap[position[0]][position[1]] = Obj::Stone;
@@ -58,11 +58,11 @@ private:
             }
         }
         if (!placedStones)
-            return placeStone(stateMap, getRandomList(0, B_SIZE, 2));
+            return placeStone(stateMap, getRandomList(0, B_SIZE - 1, 2));
     }
     void placeFruit(MAP& stateMap, std::vector<int> position) {
         while (!isEmpty(stateMap, position)) {
-            position = getRandomList(0, B_SIZE, 2);
+            position = getRandomList(0, B_SIZE - 1, 2);
         }
         stateMap[position[0]][position[1]] = Obj::Fruit;
     }
