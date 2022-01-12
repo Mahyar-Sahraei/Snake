@@ -7,11 +7,13 @@
 #define B_SIZE 15
 
 typedef std::vector<std::vector<Obj>> MAP;
+typedef std::pair<sf::Vector2f, sf::Vector2f> SNAKES_POS;
 
 class Initializer
 {
 private:
-    void placeObject(std::vector<Obj> objects, MAP& stateMap) {
+    SNAKES_POS placeObject(std::vector<Obj> objects, MAP& stateMap) {
+        SNAKES_POS snakesPos;
         for (auto object : objects) {
         auto randPos = getRandomList(0, B_SIZE, 2);
             switch (object) {
@@ -21,22 +23,27 @@ private:
             case Obj::Fruit:
                 placeFruit(stateMap, randPos);
                 break;
-            case Obj::Snake:
-                placeSnake(stateMap, randPos);
+            case Obj::Snake1:
+                snakesPos.first = placeSnake(stateMap, randPos, Obj::Snake1);
+                break;
+            case Obj::Snake2:
+                snakesPos.second = placeSnake(stateMap, randPos, Obj::Snake2);
                 break;
             default:
                 break;
             }
         }
+        return snakesPos;
     }
     bool isEmpty(MAP& stateMap, std::vector<int> position) {
         return stateMap[position[0]][position[1]] == Obj::Empty;
     }
-    void placeSnake(MAP& stateMap, std::vector<int> position) {
+    sf::Vector2f placeSnake(MAP& stateMap, std::vector<int> position, Obj which) {
         while (!isEmpty(stateMap, position)) {
             position = getRandomList(0, B_SIZE, 2);
         }
-        stateMap[position[0]][position[1]] = Obj::Snake;
+        stateMap[position[0]][position[1]] = which;
+        return sf::Vector2f(position[0], position[1]);
     }
     void placeStone(MAP& stateMap, std::vector<int> position) {
         bool placedStones = false;
@@ -60,8 +67,8 @@ private:
         stateMap[position[0]][position[1]] = Obj::Fruit;
     }
 public:
-    void initiate(MAP& stateMap) {
-        placeObject({ Obj::Snake, Obj::Snake,
+     SNAKES_POS initiate(MAP& stateMap) {
+        return placeObject({ Obj::Snake2, Obj::Snake2,
             Obj::Stone, Obj::Stone, Obj::Fruit }, stateMap);
     };
 	std::vector<int> getRandomList(int min, int max, int count = 1);
