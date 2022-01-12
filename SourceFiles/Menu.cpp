@@ -1,6 +1,12 @@
 #include "Menu.hpp"
 
 Menu::Menu(float width, float length) {
+    backGround.setSize(sf::Vector2f (width,length));
+    if (!backGroundTexture.loadFromFile("menuBackGround.png")) {
+        //error
+    }
+    backGround.setTexture(&backGroundTexture);
+
     if (!font.loadFromFile("font.ttf")) {
         //error
     }
@@ -33,6 +39,7 @@ void Menu::moveDownWhiteKeyboard() {
 }
 
 void Menu::drawWindow(sf::RenderWindow &window) {
+    window.draw(backGround);
     for (int i = 0; i < NUMBER_OF_ITEMS; ++i) {
         window.draw(text[i]);
     }
