@@ -17,9 +17,6 @@
     <ClCompile Include="SourceFiles\board.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SourceFiles\fruit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SourceFiles\initializer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -27,9 +24,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\snake.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SourceFiles\stone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SourceFiles\MainWin.cpp">
@@ -48,16 +42,10 @@
     <ClInclude Include="SourceFiles\HeaderFiles\board.hpp">
       <Filter>HeaderFiles</Filter>
     </ClInclude>
-    <ClInclude Include="SourceFiles\HeaderFiles\fruit.hpp">
-      <Filter>HeaderFiles</Filter>
-    </ClInclude>
     <ClInclude Include="SourceFiles\HeaderFiles\initializer.hpp">
       <Filter>HeaderFiles</Filter>
     </ClInclude>
     <ClInclude Include="SourceFiles\HeaderFiles\snake.hpp">
-      <Filter>HeaderFiles</Filter>
-    </ClInclude>
-    <ClInclude Include="SourceFiles\HeaderFiles\stone.hpp">
       <Filter>HeaderFiles</Filter>
     </ClInclude>
     <ClInclude Include="SourceFiles\HeaderFiles\Tiles.hpp">

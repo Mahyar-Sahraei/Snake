@@ -147,23 +147,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="SourceFiles\board.cpp" />
-    <ClCompile Include="SourceFiles\fruit.cpp" />
     <ClCompile Include="SourceFiles\initializer.cpp" />
     <ClCompile Include="SourceFiles\MainWin.cpp" />
     <ClCompile Include="SourceFiles\object.cpp" />
     <ClCompile Include="SourceFiles\snake.cpp" />
-    <ClCompile Include="SourceFiles\stone.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="images.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceFiles\HeaderFiles\board.hpp" />
-    <ClInclude Include="SourceFiles\HeaderFiles\fruit.hpp" />
     <ClInclude Include="SourceFiles\HeaderFiles\initializer.hpp" />
     <ClInclude Include="SourceFiles\HeaderFiles\object.hpp" />
     <ClInclude Include="SourceFiles\HeaderFiles\snake.hpp" />
-    <ClInclude Include="SourceFiles\HeaderFiles\stone.hpp" />
     <ClInclude Include="SourceFiles\HeaderFiles\Tiles.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
