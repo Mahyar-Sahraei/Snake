@@ -40,11 +40,12 @@ public:
 		vertices.resize(4 * B_SIZE * B_SIZE);
 		vertices.setPrimitiveType(sf::Quads);
 		std::pair<Obj, sf::Vector2f>
-			snake(Obj::Snake, sf::Vector2f(0, 0)),
+			snake1(Obj::Snake1, sf::Vector2f(0, 0)),
+			snake2(Obj::Snake2, sf::Vector2f(0, 0)),
 			stone(Obj::Stone, sf::Vector2f(0, 300)),
 			fruit(Obj::Fruit, sf::Vector2f(285, 300)),
 			board(Obj::Empty, sf::Vector2f(300, 0));
-		texPositions.insert({snake, stone, fruit, board});
+		texPositions.insert({snake1, snake2, stone, fruit, board});
 	}
 	void load(MAP stateMap) {
 		for (size_t i = 0; i < B_SIZE; i++) {
