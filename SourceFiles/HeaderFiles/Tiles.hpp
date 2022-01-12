@@ -4,6 +4,8 @@
 #define WIDTH 200
 #define T_SIZE 50
 
+typedef std::vector<std::vector<Obj>> MAP;
+
 class Tiles : public sf::Drawable {
 private:
 	sf::VertexArray vertices;
@@ -44,7 +46,7 @@ public:
 			board(Obj::Empty, sf::Vector2f(300, 0));
 		texPositions.insert({snake, stone, fruit, board});
 	}
-	void load(vector<vector<Obj>> stateMap) {
+	void load(MAP stateMap) {
 		for (size_t i = 0; i < B_SIZE; i++) {
 			for (size_t j = 0; j < B_SIZE; j ++) {
 				int tileIndex = (i * B_SIZE + j) * 4;

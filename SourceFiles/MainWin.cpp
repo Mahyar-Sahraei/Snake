@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "HeaderFiles/initializer.hpp"
 #include "HeaderFiles/Tiles.hpp"
 #include "HeaderFiles/snake.hpp"
 #include "HeaderFiles/stone.hpp"
@@ -10,9 +11,11 @@ int main() {
 	Snake snake1, snake2;
 	Stone stone;
 	Fruit fruit;
-	Board board({ snake1, snake2, stone, fruit });
+	Board board;
+	Initializer initializer; 
+	initializer.initiate(board.getStateMap());
 	Tiles map;
-	map.load(board.stateMap);
+	map.load(board.getStateMap());
 	while (mainWin.isOpen()) {
 		sf::Event event;
 		while (mainWin.pollEvent(event)) {
@@ -20,7 +23,7 @@ int main() {
 				mainWin.close();
 			}
 		}
-		map.load(board.stateMap);
+		map.load(board.getStateMap());
 		mainWin.clear(sf::Color::Black);
 		mainWin.draw(map);
 		mainWin.display();
