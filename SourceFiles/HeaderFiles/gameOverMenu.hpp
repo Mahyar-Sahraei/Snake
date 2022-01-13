@@ -3,7 +3,7 @@
 
 #define NUMBER_OF_ITEMS 2
 
-class Menu {
+class gameOverMenu {
 private:
     sf::Font font;
     sf::Text text[NUMBER_OF_ITEMS];
@@ -12,7 +12,7 @@ private:
     int selectedItem{0};
 
 public:
-    Menu(float width, float length);
+    gameOverMenu(float width, float length);
     void moveUpWithKeyboard();
     void moveDownWhiteKeyboard();
     void drawWindow(sf::RenderWindow &window);

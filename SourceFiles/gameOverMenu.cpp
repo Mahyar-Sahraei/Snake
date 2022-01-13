@@ -1,6 +1,6 @@
-#include "Menu.hpp"
+#include "HeaderFiles/gameOverMenu.hpp"
 
-Menu::Menu(float width, float length) {
+gameOverMenu::gameOverMenu(float width, float length) {
     backGround.setSize(sf::Vector2f (width,length));
     if (!backGroundTexture.loadFromFile("gameOverBackGround.png")) {
         //error
@@ -24,7 +24,7 @@ Menu::Menu(float width, float length) {
     text[1].setCharacterSize(50);
 }
 
-void Menu::moveUpWithKeyboard() {
+void gameOverMenu::moveUpWithKeyboard() {
     if (selectedItem > 0) {
         text[selectedItem].setColor(sf::Color::Yellow);
         selectedItem--;
@@ -36,7 +36,7 @@ void Menu::moveUpWithKeyboard() {
     }
 }
 
-void Menu::moveDownWhiteKeyboard() {
+void gameOverMenu::moveDownWhiteKeyboard() {
     if (selectedItem < NUMBER_OF_ITEMS-1) {
         text[selectedItem].setColor(sf::Color::Yellow);
         selectedItem++;
@@ -48,7 +48,7 @@ void Menu::moveDownWhiteKeyboard() {
     }
 }
 
-void Menu::drawWindow(sf::RenderWindow &window) {
+void gameOverMenu::drawWindow(sf::RenderWindow &window) {
     window.draw(backGround);
     for (int i = 0; i < NUMBER_OF_ITEMS; ++i) {
         window.draw(text[i]);
