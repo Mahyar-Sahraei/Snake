@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "object.hpp"
-#include "HeaderFiles/board.hpp"
+#include "board.hpp"
 
 enum class Dir {
     Stop, Right, Down, Left, Up
