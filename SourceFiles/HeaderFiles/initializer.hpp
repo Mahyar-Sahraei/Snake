@@ -69,7 +69,7 @@ private:
 public:
      SNAKES_POS initiate(MAP& stateMap) {
         return placeObject({ Obj::Snake2, Obj::Snake2,
-            Obj::Stone, Obj::Stone, Obj::Fruit }, stateMap);
+            Obj::Stone, Obj::Stone, Obj::Fruit, Obj::Fruit }, stateMap);
     };
 	std::vector<int> getRandomList(int min, int max, int count = 1);
 };
