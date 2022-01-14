@@ -1,12 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-struct Body {
-	sf::Vector2f head;
-	Body* next;
-};
-
-enum class Obj { Empty = 0, Stone, Fruit, Snake };
+enum class Obj { Empty = 0, Stone, Fruit, Snake1, Snake2 };
 
 class Object {
 private:
