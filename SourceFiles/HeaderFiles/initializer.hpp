@@ -1,6 +1,6 @@
 #pragma once
 #include <random>
-#include <cstdarg>
+#include <chrono>
 #include <vector>
 #include "object.hpp"
 #include "board.hpp"
@@ -68,7 +68,7 @@ private:
     }
 public:
      SNAKES_POS initiate(MAP& stateMap) {
-        return placeObject({ Obj::Snake2, Obj::Snake2,
+        return placeObject({ Obj::Snake1, Obj::Snake2,
             Obj::Stone, Obj::Stone, Obj::Fruit, Obj::Fruit }, stateMap);
     };
 	std::vector<int> getRandomList(int min, int max, int count = 1);
