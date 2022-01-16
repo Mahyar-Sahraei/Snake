@@ -37,7 +37,9 @@ private:
     }
 public:
     std::vector<sf::Vector2f> body;
+    Dir direction = Dir::Stop;
     Snake(Obj type, sf::Vector2f position);
     bool isAlive();
     void move(Board board, Dir direction);
+    ~Snake();
 };
