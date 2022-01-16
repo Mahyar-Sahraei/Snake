@@ -1,4 +1,4 @@
-#include "Menu.hpp"
+#include "HeaderFiles/Menu.hpp"
 
 Menu::Menu(float width, float length) {
     backGround.setSize(sf::Vector2f (width,length));
