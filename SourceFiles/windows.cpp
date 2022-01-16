@@ -11,6 +11,9 @@ void win::mainMenu(sf::RenderWindow &window) {
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
             if (event.type == sf::Event::KeyReleased)
                 switch (event.key.code) {
                     case sf::Keyboard::Up:
@@ -84,7 +87,10 @@ void win::startGame(sf::RenderWindow &window, Board &board) {
 		}
 		snake1.move(board, s1);
 		snake2.move(board, s2);
-		if (!snake1.isAlive() || !snake2.isAlive()) break;
+		if (!snake1.isAlive() || !snake2.isAlive()) {
+            endGame(window, board);
+            break;
+        }
 		board.clear();
 		board.putSnake(snake1.body, snake1.getType());
 		board.putSnake(snake2.body, snake2.getType());
@@ -93,29 +99,39 @@ void win::startGame(sf::RenderWindow &window, Board &board) {
 		window.draw(map);
 		window.display();
 	}
-    endGame(window, board);
+
 }
 
 void win::endGame(sf::RenderWindow &window, Board &board) {
     gameOverMenu menu(window.getSize().x,window.getSize().y);
-    sf::Event event;
-    if (event.type == sf::Event::KeyReleased)
-        switch (event.key.code) {
-            case sf::Keyboard::Up:
-                menu.moveUpWithKeyboard();
-                break;
-            case sf::Keyboard::Down:
-                menu.moveDownWhiteKeyboard();
-                break;
-            case sf::Keyboard::Return:
-                switch (menu.getPressedItem()) {
-                    case 0:
-                        startGame(window,board);
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+            if (event.type == sf::Event::KeyReleased)
+                switch (event.key.code) {
+                    case sf::Keyboard::Up:
+                        menu.moveUpWithKeyboard();
                         break;
-                    case 1:
-                        window.close();
+                    case sf::Keyboard::Down:
+                        menu.moveDownWhiteKeyboard();
+                        break;
+                    case sf::Keyboard::Return:
+                        switch (menu.getPressedItem()) {
+                            case 0:
+                                startGame(window, board);
+                                break;
+                            case 1:
+                                window.close();
+                                break;
+                        }
                         break;
                 }
-                break;
         }
+        window.clear(sf::Color::Black);
+        menu.drawWindow(window);
+        window.display();
+    }
 }
