@@ -9,8 +9,20 @@ Obj Board::getObj(sf::Vector2f position) {
 	return stateMap[position.x][position.y];
 }
 
+Obj Board::getObj(std::vector<int> position){
+	return stateMap[position[0]][position[1]];
+}
+
+int Board::getFruitCount(){
+	return fruitCount;
+}
+
 void Board::putObj(Obj object, sf::Vector2f position) {
 	stateMap[position.x][position.y] = object;
+}
+
+void Board::putObj(Obj object, std::vector<int> position){
+	stateMap[position[0]][position[1]] = object;
 }
 
 void Board::putSnake(std::vector<sf::Vector2f> body, Obj which) {
@@ -19,13 +31,36 @@ void Board::putSnake(std::vector<sf::Vector2f> body, Obj which) {
 	}
 }
 
-void Board::clear() {
+void Board::putFruit(){
+	Initializer initializer;
+	int attempts = 0;
+	while (attempts < 100){
+		auto position = initializer.getRandomList(0, B_SIZE - 1, 2);
+		if (getObj(position) == Obj::Empty){
+			putObj(Obj::Fruit, position);
+			break;
+		}
+		attempts++;
+	}
+}
+
+void Board::reset() {
+	fruitCount = 0;
 	for (size_t i = 0; i < B_SIZE; i++) {
 		for (size_t j = 0; j < B_SIZE; j++)
 		{
-			if (stateMap[i][j] == Obj::Snake1 || stateMap[i][j] == Obj::Snake2){
-				stateMap[i][j] = Obj::Empty;
+			Obj* tile = &stateMap[i][j];
+			if (*tile == Obj::Snake1 || *tile == Obj::Snake2){
+				*tile = Obj::Empty;
+			}
+			else if (stateMap[i][j] == Obj::Fruit){
+				fruitCount++;
 			}
 		}
 	}
+}
+
+Board::~Board(){
+	for (auto row : stateMap)
+		row.erase(row.begin(), row.end());
 }
