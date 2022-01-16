@@ -1,4 +1,3 @@
-#pragma once
 #include "HeaderFiles/snake.hpp"
 #include "HeaderFiles/board.hpp"
 #include "HeaderFiles/Tiles.hpp"
@@ -6,7 +5,6 @@
 
 void win::mainMenu(sf::RenderWindow &window) {
     Menu menu(window.getSize().x, window.getSize().y);
-    Board board;
     menu.drawWindow(window);
     while (window.isOpen()) {
         sf::Event event;
@@ -25,7 +23,7 @@ void win::mainMenu(sf::RenderWindow &window) {
                     case sf::Keyboard::Return:
                         switch (menu.getPressedItem()) {
                             case 0:
-                                startGame(window, board);
+                                startGame(window);
                                 break;
                             case 1:
                                 window.close();
@@ -40,15 +38,15 @@ void win::mainMenu(sf::RenderWindow &window) {
     }
 }
 
-void win::startGame(sf::RenderWindow &window, Board &board) {
-    //start main menu here, if user pressed start then exit the function
+void win::startGame(sf::RenderWindow &window) {
+    Board board;
     Initializer initializer; 
 	std::pair<sf::Vector2f, sf::Vector2f> snakesPos = 
 		initializer.initiate(board.getStateMap());
 	Snake snake1(Obj::Snake1, snakesPos.first);
 	Snake snake2(Obj::Snake2, snakesPos.second);
 	Tiles map;
-	Dir s1 = Dir::Stop, s2 = Dir::Stop;
+    Dir tmpSnake1Dir = snake1.direction, tmpSnake2Dir = snake2.direction;
 	map.load(board.getStateMap());
 	while (window.isOpen()) {
 		sf::Event event;
@@ -57,43 +55,44 @@ void win::startGame(sf::RenderWindow &window, Board &board) {
 				window.close();
 			}
 			else if (event.type == sf::Event::KeyPressed) {
-				switch (event.key.code) { 
-				case sf::Keyboard::W:
-					if (s2 != Dir::Down) s2 = Dir::Up;
-					break;
-				case sf::Keyboard::D:
-					if (s2 != Dir::Left)s2 = Dir::Right;
-					break;
-				case sf::Keyboard::S:
-					if (s2 != Dir::Up)s2 = Dir::Down;
-					break;
-				case sf::Keyboard::A:
-					if (s2 != Dir::Right)s2 = Dir::Left;
-					break;
+				switch (event.key.code) {
                 case sf::Keyboard::Up:
-					if (s1 != Dir::Down) s1 = Dir::Up;
+					if (snake1.direction != Dir::Down) tmpSnake1Dir = Dir::Up;
 					break;
 				case sf::Keyboard::Right:
-					if (s1 != Dir::Left) s1 = Dir::Right;
+					if (snake1.direction != Dir::Left) tmpSnake1Dir = Dir::Right;
 					break;
 				case sf::Keyboard::Down:
-					if (s1 != Dir::Up) s1 = Dir::Down;
+					if (snake1.direction != Dir::Up) tmpSnake1Dir = Dir::Down;
 					break;
 				case sf::Keyboard::Left:
-					if (s1 != Dir::Right) s1 = Dir::Left;
+					if (snake1.direction != Dir::Right) tmpSnake1Dir = Dir::Left;
+					break; 
+				case sf::Keyboard::W:
+					if (snake2.direction != Dir::Down) tmpSnake2Dir = Dir::Up;
+					break;
+				case sf::Keyboard::D:
+					if (snake2.direction != Dir::Left)tmpSnake2Dir = Dir::Right;
+					break;
+				case sf::Keyboard::S:
+					if (snake2.direction != Dir::Up)tmpSnake2Dir = Dir::Down;
+					break;
+				case sf::Keyboard::A:
+					if (snake2.direction != Dir::Right)tmpSnake2Dir = Dir::Left;
 					break;
 				}
 			}
 		}
-		snake1.move(board, s1);
-		snake2.move(board, s2);
+		snake1.move(board, tmpSnake1Dir);
+		snake2.move(board, tmpSnake2Dir);
 		if (!snake1.isAlive() || !snake2.isAlive()) {
-            endGame(window, board);
+            endGame(window);
             break;
         }
-		board.clear();
+		board.reset();
 		board.putSnake(snake1.body, snake1.getType());
 		board.putSnake(snake2.body, snake2.getType());
+        for (int i = board.getFruitCount(); i < 2; i++) board.putFruit();
 		map.load(board.getStateMap());
 		window.clear(sf::Color::Black);
 		window.draw(map);
@@ -102,7 +101,7 @@ void win::startGame(sf::RenderWindow &window, Board &board) {
 
 }
 
-void win::endGame(sf::RenderWindow &window, Board &board) {
+void win::endGame(sf::RenderWindow &window) {
     gameOverMenu menu(window.getSize().x,window.getSize().y);
     while (window.isOpen()) {
         sf::Event event;
@@ -121,7 +120,7 @@ void win::endGame(sf::RenderWindow &window, Board &board) {
                     case sf::Keyboard::Return:
                         switch (menu.getPressedItem()) {
                             case 0:
-                                startGame(window, board);
+                                startGame(window);
                                 break;
                             case 1:
                                 window.close();
