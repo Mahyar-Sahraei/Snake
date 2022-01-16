@@ -4,29 +4,37 @@
 #include "HeaderFiles/Tiles.hpp"
 #include "HeaderFiles/windows.hpp"
 
-void win::mainMenu(sf::RenderWindow &window, sf::Event event) {
-    Menu menu(window.getSize().x,window.getSize().y);
+void win::mainMenu(sf::RenderWindow &window) {
+    Menu menu(window.getSize().x, window.getSize().y);
     Board board;
     menu.drawWindow(window);
-    if (event.type == sf::Event::KeyReleased)
-        switch (event.key.code) {
-            case sf::Keyboard::Up:
-                menu.moveUpWithKeyboard();
-                break;
-            case sf::Keyboard::Down:
-                menu.moveDownWhiteKeyboard();
-                break;
-            case sf::Keyboard::Return:
-                switch (menu.getPressedItem()) {
-                    case 0:
-                        startGame(window,board);
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::KeyReleased)
+                switch (event.key.code) {
+                    case sf::Keyboard::Up:
+                        menu.moveUpWithKeyboard();
                         break;
-                    case 1:
-                        window.close();
+                    case sf::Keyboard::Down:
+                        menu.moveDownWhiteKeyboard();
+                        break;
+                    case sf::Keyboard::Return:
+                        switch (menu.getPressedItem()) {
+                            case 0:
+                                startGame(window, board);
+                                break;
+                            case 1:
+                                window.close();
+                                break;
+                        }
                         break;
                 }
-                break;
         }
+        window.clear(sf::Color::Black);
+        menu.drawWindow(window);
+        window.display();
+    }
 }
 
 void win::startGame(sf::RenderWindow &window, Board &board) {

@@ -5,7 +5,7 @@
 #include "gameOverMenu.hpp"
 
 namespace win {
-    void mainMenu(sf::RenderWindow& window, sf::Event event);
+    void mainMenu(sf::RenderWindow& window);
     void startGame(sf::RenderWindow& window, Board& board);
     void endGame(sf::RenderWindow& window, Board &board);
 }

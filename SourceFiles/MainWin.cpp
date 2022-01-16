@@ -9,6 +9,6 @@ int main() {
 	sf::RenderWindow mainWin(sf::VideoMode(B_SIZE * T_SIZE, B_SIZE * T_SIZE), "Snake!");
 	mainWin.setFramerateLimit(4);
 	Board board;
-	win::startGame(mainWin, board);
+    win::mainMenu(mainWin);
 	return 0;
 }
