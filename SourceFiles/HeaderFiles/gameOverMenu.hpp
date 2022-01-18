@@ -7,7 +7,7 @@ class gameOverMenu {
 private:
     sf::Font font;
     sf::Text text[NUMBER_OF_ITEMS];
-    sf::Text gamePoints;
+    sf::Text result;
     sf::RectangleShape backGround;
     sf::Texture backGroundTexture;
     int selectedItem{0};

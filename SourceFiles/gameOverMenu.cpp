@@ -23,10 +23,10 @@ gameOverMenu::gameOverMenu(float width, float length) {
     text[1].setString("Exit");
     text[1].setCharacterSize(70);
 
-    gamePoints.setFillColor(sf::Color::White);
-    gamePoints.setFont(font);
-    gamePoints.setPosition(sf::Vector2f(width / 2 - 250, length / (NUMBER_OF_ITEMS + 2) * 3));
-    gamePoints.setCharacterSize(37);
+    result.setFillColor(sf::Color::White);
+    result.setFont(font);
+    result.setPosition(sf::Vector2f(width / 2 - 250, length / (NUMBER_OF_ITEMS + 2) * 3));
+    result.setCharacterSize(37);
 }
 
 void gameOverMenu::moveUpWithKeyboard() {
@@ -54,7 +54,7 @@ void gameOverMenu::moveDownWhiteKeyboard() {
 }
 
 void gameOverMenu::set (std::string str) {
-    gamePoints.setString(str);
+    result.setString(str);
 }
 
 void gameOverMenu::drawWindow(sf::RenderWindow &window) {
@@ -62,5 +62,5 @@ void gameOverMenu::drawWindow(sf::RenderWindow &window) {
     for (int i = 0; i < NUMBER_OF_ITEMS; ++i) {
         window.draw(text[i]);
     }
-    window.draw(gamePoints);
+    window.draw(result);
 }
