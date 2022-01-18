@@ -2,7 +2,7 @@
 
 Snake::Snake(Obj type, sf::Vector2f position) : Object(type) {
 	this->body.resize(1);
-	body[0] = position;
+	body[0] = head = position;
 }
 
 bool Snake::isAlive() {
@@ -25,6 +25,7 @@ void Snake::move(Board board, Dir direction) {
 	else {
 		alive = false;
 	}
+	head = body[length - 1];
 }
 
 Snake::~Snake(){
