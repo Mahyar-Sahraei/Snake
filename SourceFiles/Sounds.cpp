@@ -17,9 +17,9 @@ Sounds::Sounds() {
 //    if (!eatApple.loadFromFile("eatApple.wav")) {
 //        //error
 //    }
-    if (!snakeDie.loadFromFile("snakeDie.wav")) {
+//    if (!snakeDie.loadFromFile("snakeDie.wav")) {
         //error
-    }
+//    }
 //    if (!clickEnter.loadFromFile("clickEnter.wav")) {
 //        //error
 //    }
