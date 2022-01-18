@@ -13,8 +13,8 @@ gameOverMenu::gameOverMenu(float width, float length) {
 
     text[0].setFillColor(sf::Color::Red);
     text[0].setFont(font);
-    text[0].setPosition(sf::Vector2f(width / 2 - 80, length / (NUMBER_OF_ITEMS + 2) * 1 - 10));
-    text[0].setString("Start");
+    text[0].setPosition(sf::Vector2f(width / 2 - 110, length / (NUMBER_OF_ITEMS + 2) * 1 - 10));
+    text[0].setString("Restart");
     text[0].setCharacterSize(70);
 
     text[1].setFillColor(sf::Color::Yellow);
@@ -22,6 +22,11 @@ gameOverMenu::gameOverMenu(float width, float length) {
     text[1].setPosition(sf::Vector2f(width / 2 - 55, length / (NUMBER_OF_ITEMS + 2) * 2 + 80));
     text[1].setString("Exit");
     text[1].setCharacterSize(70);
+
+    gamePoints.setFillColor(sf::Color::White);
+    gamePoints.setFont(font);
+    gamePoints.setPosition(sf::Vector2f(width / 2 - 250, length / (NUMBER_OF_ITEMS + 2) * 3));
+    gamePoints.setCharacterSize(37);
 }
 
 void gameOverMenu::moveUpWithKeyboard() {
@@ -48,9 +53,14 @@ void gameOverMenu::moveDownWhiteKeyboard() {
     }
 }
 
+void gameOverMenu::set (std::string str) {
+    gamePoints.setString(str);
+}
+
 void gameOverMenu::drawWindow(sf::RenderWindow &window) {
     window.draw(backGround);
     for (int i = 0; i < NUMBER_OF_ITEMS; ++i) {
         window.draw(text[i]);
     }
+    window.draw(gamePoints);
 }

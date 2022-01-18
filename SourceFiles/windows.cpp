@@ -110,6 +110,7 @@ void win::startGame(sf::RenderWindow &window) {
 
 void win::endGame(sf::RenderWindow &window) {
     gameOverMenu menu(window.getSize().x,window.getSize().y);
+    //menu.set("Blu point is: 10 and red point is: 20"); //set players points
     Sounds sounds;
     sounds.playGameOverMusic();
     while (window.isOpen()) {
