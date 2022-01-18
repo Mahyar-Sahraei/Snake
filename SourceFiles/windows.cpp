@@ -2,10 +2,13 @@
 #include "HeaderFiles/board.hpp"
 #include "HeaderFiles/Tiles.hpp"
 #include "HeaderFiles/windows.hpp"
+#include "HeaderFiles/Sounds.hpp"
 
 void win::mainMenu(sf::RenderWindow &window) {
     Menu menu(window.getSize().x, window.getSize().y);
     menu.drawWindow(window);
+    Sounds sounds;
+    sounds.playMenuMusic();
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -23,6 +26,7 @@ void win::mainMenu(sf::RenderWindow &window) {
                     case sf::Keyboard::Return:
                         switch (menu.getPressedItem()) {
                             case 0:
+                                sounds.pauseMenuMusic();
                                 startGame(window);
                                 break;
                             case 1:
@@ -48,6 +52,8 @@ void win::startGame(sf::RenderWindow &window) {
 	Tiles map;
     Dir tmpSnake1Dir = snake1.direction, tmpSnake2Dir = snake2.direction;
 	map.load(board.getStateMap());
+    Sounds sounds;
+    sounds.playGameMusic();
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
@@ -86,6 +92,7 @@ void win::startGame(sf::RenderWindow &window) {
 		snake1.move(board, tmpSnake1Dir);
 		snake2.move(board, tmpSnake2Dir);
 		if (!snake1.isAlive() || !snake2.isAlive()) {
+            sounds.pauseGameMusic();
             endGame(window);
             break;
         }
@@ -103,6 +110,8 @@ void win::startGame(sf::RenderWindow &window) {
 
 void win::endGame(sf::RenderWindow &window) {
     gameOverMenu menu(window.getSize().x,window.getSize().y);
+    Sounds sounds;
+    sounds.playGameOverMusic();
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -120,6 +129,7 @@ void win::endGame(sf::RenderWindow &window) {
                     case sf::Keyboard::Return:
                         switch (menu.getPressedItem()) {
                             case 0:
+                                sounds.pauseGameOverMusic();
                                 startGame(window);
                                 break;
                             case 1:
