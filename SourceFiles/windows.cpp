@@ -89,12 +89,21 @@ void win::startGame(sf::RenderWindow &window) {
 				}
 			}
 		}
-		snake1.move(board, tmpSnake1Dir);
-		snake2.move(board, tmpSnake2Dir);
-		if (!snake1.isAlive() || !snake2.isAlive()) {
+        if (tmpSnake1Dir != Dir::Stop && tmpSnake2Dir != Dir::Stop) {
+		    snake1.move(board, tmpSnake1Dir);
+		    snake2.move(board, tmpSnake2Dir);
+        }
+		if (!snake1.isAlive() && !snake2.isAlive() || snake1.head == snake2.head) {
             sounds.pauseGameMusic();
-            endGame(window);
-            break;
+            return endGame(window, "Draw.");
+        }
+        else if (!snake1.isAlive()){
+            sounds.pauseGameMusic();
+            return endGame(window, "Player 2 won!");
+        }
+        else if (!snake2.isAlive()) {
+            sounds.pauseGameMusic();
+            return endGame(window, "Player 1 won!");
         }
 		board.reset();
 		board.putSnake(snake1.body, snake1.getType());
@@ -108,9 +117,9 @@ void win::startGame(sf::RenderWindow &window) {
 
 }
 
-void win::endGame(sf::RenderWindow &window) {
+void win::endGame(sf::RenderWindow &window, std::string result) {
     gameOverMenu menu(window.getSize().x,window.getSize().y);
-    //menu.set("Blu point is: 10 and red point is: 20"); //set players points
+    menu.set(result);
     Sounds sounds;
     sounds.playGameOverMusic();
     while (window.isOpen()) {
