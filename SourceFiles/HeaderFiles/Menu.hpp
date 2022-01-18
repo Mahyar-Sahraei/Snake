@@ -7,6 +7,7 @@ class Menu {
 private:
     sf::Font font;
     sf::Text text[NUMBER_OF_ITEMS];
+    sf::Text gameName;
     sf::RectangleShape backGround;
     sf::Texture backGroundTexture;
     int selectedItem{0};
