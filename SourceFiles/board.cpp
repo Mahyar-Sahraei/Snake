@@ -26,9 +26,12 @@ void Board::putObj(Obj object, std::vector<int> position){
 }
 
 void Board::putSnake(std::vector<sf::Vector2f> body, Obj which) {
-	for (auto position : body) {
-		putObj(which, position);
+	int i = 0, length = body.size();
+	for (; i < length - 1; i++) {
+		putObj(which, body[i]);
 	}
+	if(which == Obj::Snake1) putObj(Obj::Snake1Head, body[i]);
+	else putObj(Obj::Snake2Head, body[i]);
 }
 
 void Board::putFruit(){
@@ -50,7 +53,7 @@ void Board::reset() {
 		for (size_t j = 0; j < B_SIZE; j++)
 		{
 			Obj* tile = &stateMap[i][j];
-			if (*tile == Obj::Snake1 || *tile == Obj::Snake2){
+			if (*tile == Obj::Snake1 || *tile == Obj::Snake2 || *tile == Obj::Snake1Head || *tile == Obj::Snake2Head){
 				*tile = Obj::Empty;
 			}
 			else if (stateMap[i][j] == Obj::Fruit){
