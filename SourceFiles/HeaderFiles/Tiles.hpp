@@ -1,10 +1,12 @@
+#pragma once
 #include <map>
-#include <SFML/Graphics.hpp>
+#include "object.hpp"
 #include "board.hpp"
 #define WIDTH 423
 #define T_SIZE 50
 
 typedef std::vector<std::vector<Obj>> MAP;
+typedef std::pair<Obj, sf::Vector2f> OBJ_PAIR;
 
 class Tiles : public sf::Drawable {
 private:
@@ -39,13 +41,16 @@ public:
 		texture.loadFromFile("images.png");
 		vertices.resize(4 * B_SIZE * B_SIZE);
 		vertices.setPrimitiveType(sf::Quads);
-		std::pair<Obj, sf::Vector2f>
-			snake1(Obj::Snake1, sf::Vector2f(WIDTH, 0)),
-			snake2(Obj::Snake2, sf::Vector2f(WIDTH, WIDTH)),
-			stone(Obj::Stone, sf::Vector2f(0, WIDTH)),
-			fruit(Obj::Fruit, sf::Vector2f(WIDTH, 2 * WIDTH)),
-			board(Obj::Empty, sf::Vector2f(0, 0));
-		texPositions.insert({snake1, snake2, stone, fruit, board});
+		std::initializer_list<OBJ_PAIR> texPairs = {
+			OBJ_PAIR(Obj::Snake1, sf::Vector2f(WIDTH, 0)),
+			OBJ_PAIR(Obj::Snake2, sf::Vector2f(WIDTH, WIDTH)),
+			OBJ_PAIR(Obj::Snake1Head, sf::Vector2f(WIDTH / 2, WIDTH)),
+			OBJ_PAIR(Obj::Snake2Head, sf::Vector2f(WIDTH, WIDTH / 2)),
+			OBJ_PAIR(Obj::Stone, sf::Vector2f(0, WIDTH)),
+			OBJ_PAIR(Obj::Fruit, sf::Vector2f(WIDTH, 2 * WIDTH)),
+			OBJ_PAIR(Obj::Empty, sf::Vector2f(0, 0))
+			};
+		texPositions.insert(texPairs.begin(), texPairs.end());
 	}
 	void load(MAP stateMap) {
 		for (size_t i = 0; i < B_SIZE; i++) {
