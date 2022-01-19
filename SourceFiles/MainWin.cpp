@@ -10,6 +10,7 @@ int main() {
 	sf::RenderWindow mainWin(sf::VideoMode(B_SIZE * T_SIZE, B_SIZE * T_SIZE), "Snake!");
     Settings settings(mainWin.getSize().x,mainWin.getSize().y);
 	mainWin.setFramerateLimit(15);
-    win::mainMenu(mainWin,settings);
+    Sounds sounds;
+    win::mainMenu(mainWin,settings,sounds);
 	return 0;
 }
