@@ -1,6 +1,9 @@
 #include "HeaderFiles/snake.hpp"
 
-Snake::Snake(Obj type, sf::Vector2f position) : Object(type) {
+Snake::Snake(Obj type, sf::Vector2f position) {
+	this->type = type;
+	if (type == Obj::Snake1) this->headType = Obj::Snake1Head;
+	else this->headType = Obj::Snake2Head;
 	this->body.resize(1);
 	body[0] = head = position;
 }

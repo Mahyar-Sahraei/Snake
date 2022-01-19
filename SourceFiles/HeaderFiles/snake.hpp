@@ -1,17 +1,18 @@
 #pragma once
 #include <vector>
-#include "object.hpp"
+#include <SFML/Graphics.hpp>
 #include "board.hpp"
 
 enum class Dir {
     Stop, Right, Down, Left, Up
 };
 
-class Snake : public Object{
+class Snake{
 private:
     bool alive = true;
     int length = 1;
     Obj type = Obj::Snake1;
+    Obj headType = Obj::Snake1Head;
     sf::Vector2f moveInDirection(sf::Vector2f position, Dir direction) {
         switch (direction) {
         case Dir::Up:
