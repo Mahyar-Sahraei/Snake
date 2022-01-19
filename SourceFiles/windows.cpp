@@ -3,6 +3,7 @@
 #include "HeaderFiles/Tiles.hpp"
 #include "HeaderFiles/windows.hpp"
 #include "HeaderFiles/Sounds.hpp"
+#include "HeaderFiles/SettingsMenu.hpp"
 
 void win::mainMenu(sf::RenderWindow &window) {
     Menu menu(window.getSize().x, window.getSize().y, 
@@ -31,6 +32,9 @@ void win::mainMenu(sf::RenderWindow &window) {
                                 startGame(window);
                                 break;
                             case 1:
+                                settingGame(window);
+                                break;
+                            case 2:
                                 window.close();
                                 break;
                         }
@@ -39,6 +43,52 @@ void win::mainMenu(sf::RenderWindow &window) {
         }
         window.clear(sf::Color::Black);
         menu.drawWindow(window);
+        window.display();
+    }
+}
+
+void win::settingGame(sf::RenderWindow &window) {
+    Settings settings(window.getSize().x,window.getSize().y);
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+            if (event.type == sf::Event::KeyReleased)
+                switch (event.key.code) {
+                    case sf::Keyboard::Up:
+                        settings.moveUp();
+                        break;
+                    case sf::Keyboard::Down:
+                        settings.moveDown();
+                        break;
+                    case sf::Keyboard::Right:
+                        settings.moveRight();
+                        break;
+                    case sf::Keyboard::Left:
+                        settings.moveLeft();
+                        break;
+                    case sf::Keyboard::Return:
+                        switch (settings.getPressedItem()) {
+                            case 0:
+                                //sound on
+                                break;
+                            case 1:
+                                //sound of
+                                break;
+                            case 2:
+                                //fast speed
+                                break;
+                            case 3:
+                                //slow speed
+                                break;
+                        }
+                        break;
+                }
+        }
+        window.clear(sf::Color::Black);
+        settings.drawWindow(window);
         window.display();
     }
 }
