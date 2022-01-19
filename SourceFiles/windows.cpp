@@ -5,7 +5,8 @@
 #include "HeaderFiles/Sounds.hpp"
 
 void win::mainMenu(sf::RenderWindow &window) {
-    Menu menu(window.getSize().x, window.getSize().y);
+    Menu menu(window.getSize().x, window.getSize().y, 
+        "menuBackGround.png", "menuFont.ttf", "Snake!", "Start", "Exit");
     menu.drawWindow(window);
     Sounds sounds;
     sounds.playMenuMusic();
@@ -106,8 +107,8 @@ void win::startGame(sf::RenderWindow &window) {
             return endGame(window, "Player 1 won!");
         }
 		board.reset();
-		board.putSnake(snake1.body, snake1.getType());
-		board.putSnake(snake2.body, snake2.getType());
+		board.putSnake(snake1.body, Obj::Snake1);
+		board.putSnake(snake2.body, Obj::Snake2);
         for (int i = board.getFruitCount(); i < 2; i++) board.putFruit();
 		map.load(board.getStateMap());
 		window.clear(sf::Color::Black);
@@ -118,8 +119,8 @@ void win::startGame(sf::RenderWindow &window) {
 }
 
 void win::endGame(sf::RenderWindow &window, std::string result) {
-    gameOverMenu menu(window.getSize().x,window.getSize().y);
-    menu.set(result);
+    Menu menu(window.getSize().x,window.getSize().y, 
+        "gameOverBackGround.png", "gameOverFont.ttf", result, "Restart", "Exit");
     Sounds sounds;
     sounds.playGameOverMusic();
     while (window.isOpen()) {
