@@ -72,19 +72,19 @@ void win::settingGame(sf::RenderWindow &window) {
                     case sf::Keyboard::Return:
                         switch (settings.getPressedItem()) {
                             case 0:
-                                //exit
+                                return;
                                 break;
                             case 1:
-                                //fast speed
+                                settings.selectFastSpeed();
                                 break;
                             case 2:
-                                //slow speed
+                                settings.selectSlowSpeed();
                                 break;
                             case 3:
-                                //sound on
+                                settings.selectSoundOn();
                                 break;
                             case 4:
-                                //sound off
+                                settings.selectSoundOff();
                                 break;
                         }
                         break;

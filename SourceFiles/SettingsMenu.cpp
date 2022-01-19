@@ -120,6 +120,38 @@ void Settings::moveLeft() {
     texts[selectedItem].setFillColor(sf::Color::Red);
 }
 
+void Settings::selectFastSpeed() {
+    if (selectedSpeed==2) {
+        texts[2].setFillColor(sf::Color::Black);
+        selectedSpeed=1;
+        texts[1].setFillColor(sf::Color::Yellow);
+    }
+}
+
+void Settings::selectSlowSpeed() {
+    if (selectedSpeed==1) {
+        texts[1].setFillColor(sf::Color::Black);
+        selectedSpeed=2;
+        texts[2].setFillColor(sf::Color::Yellow);
+    }
+}
+
+void Settings::selectSoundOn() {
+    if (selectedSound==4) {
+        texts[4].setFillColor(sf::Color::Black);
+        selectedSound=3;
+        texts[3].setFillColor(sf::Color::Yellow);
+    }
+}
+
+void Settings::selectSoundOff() {
+    if (selectedSound==3) {
+        texts[3].setFillColor(sf::Color::Black);
+        selectedSound=4;
+        texts[4].setFillColor(sf::Color::Yellow);
+    }
+}
+
 void Settings::drawWindow(sf::RenderWindow &window) {
     window.draw(backGround);
     window.draw(speedTitle);

@@ -19,8 +19,11 @@ public:
     void moveDown();
     void moveRight();
     void moveLeft();
+    void selectFastSpeed();
+    void selectSlowSpeed();
+    void selectSoundOn();
+    void selectSoundOff();
     void drawWindow(sf::RenderWindow &window);
     //return 0 = Fast Speed , return 1 = Slow Speed , return 2 = Sound On , return 4 = Sound Off
     int getPressedItem() { return selectedItem; }
-
 };
