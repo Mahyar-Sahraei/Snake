@@ -2,7 +2,7 @@
 #include "HeaderFiles/Menu.hpp"
 
 Menu::Menu(float width, float length, std::string background, std::string font, 
-    std::string title, std::string firstButton, std::string secondButton) {
+    std::string title, std::string firstButton, std::string secondButton, int positionChanger) {
     backGround.setSize(sf::Vector2f (width,length));
     if (!backGroundTexture.loadFromFile(background)) {
         //error
@@ -15,32 +15,33 @@ Menu::Menu(float width, float length, std::string background, std::string font,
 
     text[0].setFillColor(sf::Color::Red);
     text[0].setFont(this->font);
-    sf::Vector2f textPosition(width / 2 - firstButton.length() * 16, 
-        length / (NUMBER_OF_ITEMS + 2) * 1.7);
+    sf::Vector2f textPosition(width / 2 - firstButton.length() * 16,
+        length / (NUMBER_OF_ITEMS + 2) * 1.7 + positionChanger);
     text[0].setPosition(textPosition);
     text[0].setString(firstButton);
     text[0].setCharacterSize(70);
 
     text[1].setFillColor(sf::Color::White);
     text[1].setFont(this->font);
-    textPosition = sf::Vector2f(width / 2 - secondButton.length() * 16,
-                                length / (NUMBER_OF_ITEMS + 2) * 2.4);
+    textPosition = sf::Vector2f(width / 2 - secondButton.length() * 16 -55,
+                                length / (NUMBER_OF_ITEMS + 2) * 2.4 +(positionChanger/1.1));
     text[1].setPosition(textPosition);
     text[1].setString("Settings");
     text[1].setCharacterSize(70);
 
     text[2].setFillColor(sf::Color::White);
     text[2].setFont(this->font);
-    textPosition = sf::Vector2f(width / 2 - secondButton.length() * 16,
-                                length / (NUMBER_OF_ITEMS + 2) * 3.1);
+    textPosition = sf::Vector2f(width / 2 - secondButton.length() * 16 +15,
+                                length / (NUMBER_OF_ITEMS + 2) * 3.1+(positionChanger/1.3));
     text[2].setPosition(textPosition);
     text[2].setString(secondButton);
     text[2].setCharacterSize(70);
 
-    this->title.setFillColor(sf::Color::Black);
+    sf::Color titleColor(80,80,80);
+    this->title.setFillColor(titleColor);
     this->title.setFont(this->font);
     textPosition = sf::Vector2f(width / 2 - title.length() * 16, 
-        length / (NUMBER_OF_ITEMS + 2) - 100);
+        length / (NUMBER_OF_ITEMS + 2) - 100+positionChanger/3);
     this->title.setPosition(textPosition);
     this->title.setString(title);
     this->title.setCharacterSize(80);
@@ -53,7 +54,7 @@ void Menu::moveUpWithKeyboard() {
         text[selectedItem].setFillColor(sf::Color::Red);
     } else {
         text[selectedItem].setFillColor(sf::Color::White);
-        selectedItem++;
+        selectedItem+=2;
         text[selectedItem].setFillColor(sf::Color::Red);
     }
 }
@@ -65,7 +66,7 @@ void Menu::moveDownWhiteKeyboard() {
         text[selectedItem].setFillColor(sf::Color::Red);
     } else {
         text[selectedItem].setFillColor(sf::Color::White);
-        selectedItem--;
+        selectedItem-=2;
         text[selectedItem].setFillColor(sf::Color::Red);
     }
 }

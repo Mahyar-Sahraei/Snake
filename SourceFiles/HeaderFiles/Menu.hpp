@@ -14,7 +14,7 @@ protected:
 
 public:
     Menu(float width, float length, std::string background, std::string font, std::string title,
-        std::string firstButton, std::string secondButton);
+        std::string firstButton, std::string secondButton, int positionChanger);
     void moveUpWithKeyboard();
     void moveDownWhiteKeyboard();
     void drawWindow(sf::RenderWindow &window);

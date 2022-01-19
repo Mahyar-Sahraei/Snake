@@ -7,7 +7,7 @@
 
 void win::mainMenu(sf::RenderWindow &window) {
     Menu menu(window.getSize().x, window.getSize().y, 
-        "menuBackGround.png", "menuFont.ttf", "Snake!", "Start", "Exit");
+        "menuBackGround.png", "menuFont.ttf", "Snake!", "Start", "Exit", 0);
     menu.drawWindow(window);
     Sounds sounds;
     sounds.playMenuMusic();
@@ -173,7 +173,7 @@ void win::startGame(sf::RenderWindow &window) {
 
 void win::endGame(sf::RenderWindow &window, std::string result) {
     Menu menu(window.getSize().x,window.getSize().y, 
-        "gameOverBackGround.png", "gameOverFont.ttf", result, "Restart", "Exit");
+        "gameOverBackGround.png", "gameOverFont.ttf", result, "Restart", "Exit" , 200);
     Sounds sounds;
     sounds.playGameOverMusic();
     while (window.isOpen()) {
@@ -197,6 +197,9 @@ void win::endGame(sf::RenderWindow &window, std::string result) {
                                 startGame(window);
                                 break;
                             case 1:
+                                settingGame(window);
+                                break;
+                            case 2:
                                 window.close();
                                 break;
                         }
