@@ -23,11 +23,19 @@ Menu::Menu(float width, float length, std::string background, std::string font,
 
     text[1].setFillColor(sf::Color::White);
     text[1].setFont(this->font);
-    textPosition = sf::Vector2f(width / 2 - secondButton.length() * 16, 
-        length / (NUMBER_OF_ITEMS + 2) * 2.4);
+    textPosition = sf::Vector2f(width / 2 - secondButton.length() * 16,
+                                length / (NUMBER_OF_ITEMS + 2) * 2.4);
     text[1].setPosition(textPosition);
-    text[1].setString(secondButton);
+    text[1].setString("Settings");
     text[1].setCharacterSize(70);
+
+    text[2].setFillColor(sf::Color::White);
+    text[2].setFont(this->font);
+    textPosition = sf::Vector2f(width / 2 - secondButton.length() * 16,
+                                length / (NUMBER_OF_ITEMS + 2) * 3.1);
+    text[2].setPosition(textPosition);
+    text[2].setString(secondButton);
+    text[2].setCharacterSize(70);
 
     this->title.setFillColor(sf::Color::Black);
     this->title.setFont(this->font);
