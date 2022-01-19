@@ -4,10 +4,12 @@
 #include "HeaderFiles/Tiles.hpp"
 #include "HeaderFiles/snake.hpp"
 #include "HeaderFiles/windows.hpp"
+#include "HeaderFiles/SettingsMenu.hpp"
 
 int main() {
 	sf::RenderWindow mainWin(sf::VideoMode(B_SIZE * T_SIZE, B_SIZE * T_SIZE), "Snake!");
-	mainWin.setFramerateLimit(4);
-    win::mainMenu(mainWin);
+    Settings settings(mainWin.getSize().x,mainWin.getSize().y);
+	mainWin.setFramerateLimit(15);
+    win::mainMenu(mainWin,settings);
 	return 0;
 }

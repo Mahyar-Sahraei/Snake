@@ -27,6 +27,7 @@ Sounds::Sounds() {
 
 void Sounds::playMenuMusic() {
     menuMusic.play();
+    menuMusic.setVolume(20);
 }
 
 void Sounds::pauseMenuMusic() {
