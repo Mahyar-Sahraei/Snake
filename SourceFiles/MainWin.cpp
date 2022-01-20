@@ -8,7 +8,7 @@
 
 int main() {
 	sf::RenderWindow mainWin(sf::VideoMode(B_SIZE * T_SIZE, B_SIZE * T_SIZE), "Snake!");
-    Settings settings(mainWin.getSize().x,mainWin.getSize().y, "menuFont.ttf");
+    Settings settings(mainWin.getSize().x,mainWin.getSize().y, "Resources/menuFont.ttf");
     Sounds sounds;
     win::mainMenu(mainWin, settings, sounds);
 	return 0;

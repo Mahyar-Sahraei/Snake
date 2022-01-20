@@ -7,7 +7,7 @@
 
 void win::mainMenu(sf::RenderWindow &window, Settings &settings,Sounds &sounds) {
     Menu menu(window.getSize().x, window.getSize().y, 
-        "menuBackGround.png", "menuFont.ttf", "Snake!", "Start", "Exit", 0);
+        "Resources/menuBackGround.png", "Resources/menuFont.ttf", "Snake!", "Start", "Exit", 0);
     menu.drawWindow(window);
     sounds.playMenuMusic();
     window.setFramerateLimit(30);
@@ -49,7 +49,6 @@ void win::mainMenu(sf::RenderWindow &window, Settings &settings,Sounds &sounds) 
 }
 
 void win::settingGame(sf::RenderWindow &window, Settings &settings,Sounds &sounds,int whichMenu) {
-    //Settings settings(window.getSize().x,window.getSize().y);
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -167,11 +166,11 @@ void win::startGame(sf::RenderWindow &window, Settings &settings,Sounds &sounds)
         }
         else if (!snake1.isAlive()){
             sounds.pauseGameMusic();
-            return endGame(window, "Player 2 won!",settings,sounds);
+            return endGame(window, "Red Snake Won!",settings,sounds);
         }
         else if (!snake2.isAlive()) {
             sounds.pauseGameMusic();
-            return endGame(window, "Player 1 won!",settings,sounds);
+            return endGame(window, "Blue Snake won!",settings,sounds);
         }
 		board.reset();
 		board.putSnake(snake1.body, Obj::Snake1);
@@ -187,7 +186,7 @@ void win::startGame(sf::RenderWindow &window, Settings &settings,Sounds &sounds)
 void win::endGame(sf::RenderWindow &window, std::string result, Settings &settings, Sounds& sound) {
     window.setFramerateLimit(15);
     Menu menu(window.getSize().x, window.getSize().y, 
-        "gameOverBackGround.png", "menuFont.ttf", result, "Restart", "Exit" , 200);
+        "Resources/gameOverBackGround.png", "Resources/menuFont.ttf", result, "Restart", "Exit" , 200);
     Sounds sounds;
     if (settings.isMusicOn())
         sounds.playGameOverMusic();

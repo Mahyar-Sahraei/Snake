@@ -1,7 +1,7 @@
 #include "HeaderFiles/Tiles.hpp"
 
 Tiles::Tiles() {
-		texture.loadFromFile("images.png");
+		texture.loadFromFile("Resources/images.png");
 		vertices.resize(4 * B_SIZE * B_SIZE);
 		vertices.setPrimitiveType(sf::Quads);
 		std::initializer_list<OBJ_PAIR> texPairs = {

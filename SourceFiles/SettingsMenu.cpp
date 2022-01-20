@@ -2,7 +2,7 @@
 
 Settings::Settings(float width, float length, std::string font) {
     backGround.setSize(sf::Vector2f(width, length));
-    if (!backGroundTexture.loadFromFile("settingsMenuBackground.png")) {
+    if (!backGroundTexture.loadFromFile("Resources/settingsMenuBackground.png")) {
         //error
     }
     backGround.setTexture(&backGroundTexture);
@@ -66,7 +66,7 @@ Settings::Settings(float width, float length, std::string font) {
     help.setFont(this->font);
     textPosition = sf::Vector2f(70, 620);
     help.setPosition(textPosition);
-    help.setString("Help: The red snake\nmove whit w,a,s,d and blue\nsnake move whit Up,Down,Left,Right");
+    help.setString("Help: move red snake\nusing \"WASD\" and the blue\nsnake using arrows.");
     help.setCharacterSize(20);
 }
 

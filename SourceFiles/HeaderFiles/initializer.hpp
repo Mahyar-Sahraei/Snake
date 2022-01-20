@@ -9,8 +9,7 @@
 typedef std::vector<std::vector<Obj>> MAP;
 typedef std::pair<sf::Vector2f, sf::Vector2f> SNAKES_POS;
 
-class Initializer
-{
+class Initializer {
 private:
     SNAKES_POS placeObject(std::vector<Obj> objects, MAP& stateMap) {
         SNAKES_POS snakesPos;
