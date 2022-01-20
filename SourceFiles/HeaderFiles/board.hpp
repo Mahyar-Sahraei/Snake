@@ -18,5 +18,4 @@ public:
     void putSnake(std::vector<sf::Vector2f> body, Obj which);
     void putFruit();
     void reset();
-    ~Board();
 };

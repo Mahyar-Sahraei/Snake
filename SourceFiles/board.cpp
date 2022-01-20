@@ -62,8 +62,3 @@ void Board::reset() {
 		}
 	}
 }
-
-Board::~Board(){
-	for (auto row : stateMap)
-		row.erase(row.begin(), row.end());
-}
