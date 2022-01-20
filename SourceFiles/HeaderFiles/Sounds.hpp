@@ -4,7 +4,6 @@
 class Sounds {
 private:
     sf::Music menuMusic,gameMusic,gameOverMusic;
-    sf::SoundBuffer eatApple,snakeDie,clickEnter;
 public:
     Sounds();
     void playMenuMusic();
@@ -13,7 +12,4 @@ public:
     void pauseGameMusic();
     void playGameOverMusic();
     void pauseGameOverMusic();
-    void playEatApple();
-    void playSnakeDie();
-    void playClickEnter();
 };
