@@ -10,6 +10,8 @@ void win::mainMenu(sf::RenderWindow &window, Settings &settings,Sounds &sounds) 
         "menuBackGround.png", "menuFont.ttf", "Snake!", "Start", "Exit", 0);
     menu.drawWindow(window);
     sounds.playMenuMusic();
+    window.setFramerateLimit(30);
+
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -189,6 +191,7 @@ void win::endGame(sf::RenderWindow &window, std::string result, Settings &settin
     Sounds sounds;
     if (settings.isMusicOn())
         sounds.playGameOverMusic();
+    window.setFramerateLimit(30);
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
