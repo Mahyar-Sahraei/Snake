@@ -8,8 +8,7 @@
 
 int main() {
 	sf::RenderWindow mainWin(sf::VideoMode(B_SIZE * T_SIZE, B_SIZE * T_SIZE), "Snake!");
-    Settings settings(mainWin.getSize().x,mainWin.getSize().y);
-	mainWin.setFramerateLimit(15);
+    Settings settings(mainWin.getSize().x,mainWin.getSize().y, "menuFont.ttf");
     win::mainMenu(mainWin,settings);
 	return 0;
 }

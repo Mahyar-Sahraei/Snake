@@ -29,7 +29,7 @@ void win::mainMenu(sf::RenderWindow &window, Settings &settings) {
                         switch (menu.getPressedItem()) {
                             case 0:
                                 sounds.pauseMenuMusic();
-                                startGame(window,settings);
+                                return startGame(window,settings);
                                 break;
                             case 1:
                                 settingGame(window,settings);
@@ -48,7 +48,7 @@ void win::mainMenu(sf::RenderWindow &window, Settings &settings) {
 }
 
 void win::settingGame(sf::RenderWindow &window, Settings &settings) {
-    //Settings settings(window.getSize().x,window.getSize().y);
+    window.setFramerateLimit(15);
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -81,10 +81,10 @@ void win::settingGame(sf::RenderWindow &window, Settings &settings) {
                                 settings.setFPS(2);
                                 break;
                             case 3:
-                                settings.setMusicOn(true);
+                                settings.toggleMusic(true);
                                 break;
                             case 4:
-                                settings.setMusicOn(false);
+                                settings.toggleMusic(false);
                                 break;
                         }
                         break;
@@ -171,12 +171,12 @@ void win::startGame(sf::RenderWindow &window, Settings &settings) {
 		window.draw(map);
 		window.display();
 	}
-
 }
 
 void win::endGame(sf::RenderWindow &window, std::string result, Settings &settings) {
-    Menu menu(window.getSize().x,window.getSize().y, 
-        "gameOverBackGround.png", "gameOverFont.ttf", result, "Restart", "Exit" , 200);
+    window.setFramerateLimit(15);
+    Menu menu(window.getSize().x, window.getSize().y, 
+        "gameOverBackGround.png", "menuFont.ttf", result, "Restart", "Exit" , 200);
     Sounds sounds;
     sounds.playGameOverMusic();
     while (window.isOpen()) {
@@ -197,7 +197,7 @@ void win::endGame(sf::RenderWindow &window, std::string result, Settings &settin
                         switch (menu.getPressedItem()) {
                             case 0:
                                 sounds.pauseGameOverMusic();
-                                startGame(window,settings);
+                                return startGame(window,settings);
                                 break;
                             case 1:
                                 settingGame(window,settings);

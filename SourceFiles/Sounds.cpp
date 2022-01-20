@@ -14,15 +14,15 @@ Sounds::Sounds() {
     gameMusic.setLoop(true);
     gameOverMusic.setLoop(true);
 
-//    if (!eatApple.loadFromFile("eatApple.wav")) {
-//        //error
-//    }
-//    if (!snakeDie.loadFromFile("snakeDie.wav")) {
+   if (!eatApple.loadFromFile("eatApple.wav")) {
+       //error
+   }
+   if (!snakeDie.loadFromFile("snakeDie.wav")) {
         //error
-//    }
-//    if (!clickEnter.loadFromFile("clickEnter.wav")) {
-//        //error
-//    }
+   }
+   if (!clickEnter.loadFromFile("clickEnter.wav")) {
+        //error
+   }
 }
 
 void Sounds::playMenuMusic() {

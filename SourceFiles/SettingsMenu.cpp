@@ -1,62 +1,62 @@
 #include "HeaderFiles/SettingsMenu.hpp"
 
-Settings::Settings(float width, float length) {
+Settings::Settings(float width, float length, std::string font) {
     backGround.setSize(sf::Vector2f(width, length));
     if (!backGroundTexture.loadFromFile("settingsMenuBackground.png")) {
         //error
     }
     backGround.setTexture(&backGroundTexture);
 
-    if (!font.loadFromFile("settingsMenuFont.ttf")) {
+    if (!this->font.loadFromFile(font)) {
         //error
     }
     sf::Vector2f textPosition;
     sf::Color titleColor(50, 50, 50);
 
     speedTitle.setFillColor(titleColor);
-    speedTitle.setFont(font);
+    speedTitle.setFont(this->font);
     textPosition = sf::Vector2f(240, 160);
     speedTitle.setPosition(textPosition);
     speedTitle.setString("Speed");
     speedTitle.setCharacterSize(60);
 
     soundTitle.setFillColor(titleColor);
-    soundTitle.setFont(font);
+    soundTitle.setFont(this->font);
     textPosition = sf::Vector2f(365, 450);
     soundTitle.setPosition(textPosition);
     soundTitle.setString("Sound");
     soundTitle.setCharacterSize(50);
 
     texts[0].setFillColor(sf::Color::Black);
-    texts[0].setFont(font);
+    texts[0].setFont(this->font);
     textPosition = sf::Vector2f(500, 350);
     texts[0].setPosition(textPosition);
     texts[0].setString("Exit");
     texts[0].setCharacterSize(45);
 
     texts[1].setFillColor(sf::Color::Red);
-    texts[1].setFont(font);
+    texts[1].setFont(this->font);
     textPosition = sf::Vector2f(280, 250);
     texts[1].setPosition(textPosition);
     texts[1].setString("Fast");
     texts[1].setCharacterSize(40);
 
     texts[2].setFillColor(sf::Color::Black);
-    texts[2].setFont(font);
+    texts[2].setFont(this->font);
     textPosition = sf::Vector2f(280, 300);
     texts[2].setPosition(textPosition);
     texts[2].setString("Slow");
     texts[2].setCharacterSize(45);
 
     texts[3].setFillColor(sf::Color::Blue);
-    texts[3].setFont(font);
+    texts[3].setFont(this->font);
     textPosition = sf::Vector2f(405, 520);
     texts[3].setPosition(textPosition);
     texts[3].setString("On");
     texts[3].setCharacterSize(30);
 
     texts[4].setFillColor(sf::Color::Black);
-    texts[4].setFont(font);
+    texts[4].setFont(this->font);
     textPosition = sf::Vector2f(400, 560);
     texts[4].setPosition(textPosition);
     texts[4].setString("Off");
@@ -156,7 +156,7 @@ void Settings::setFPS(int fps) {
     settingData.fps = fps;
 }
 
-void Settings::setMusicOn(bool isOn) {
+void Settings::toggleMusic(bool isOn) {
     settingData.isMusicPlaying = isOn;
 }
 
