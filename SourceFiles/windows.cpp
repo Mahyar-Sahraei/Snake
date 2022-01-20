@@ -83,10 +83,18 @@ void win::settingGame(sf::RenderWindow &window, Settings &settings,Sounds &sound
                                 settings.selectSlowSpeed();
                                 break;
                             case 3:
+                                if (whichMenu == 0)
+                                    sounds.playMenuMusic();
+                                if (whichMenu == 1)
+                                    sounds.playGameOverMusic();
                                 settings.toggleMusic(true);
+                                settings.selectSoundOn();
                                 break;
                             case 4:
                                 settings.toggleMusic(false);
+                                sounds.pauseMenuMusic();
+                                sounds.pauseGameOverMusic();
+                                settings.selectSoundOff();
                                 break;
                         }
                         break;
@@ -179,7 +187,8 @@ void win::endGame(sf::RenderWindow &window, std::string result, Settings &settin
     Menu menu(window.getSize().x, window.getSize().y, 
         "gameOverBackGround.png", "menuFont.ttf", result, "Restart", "Exit" , 200);
     Sounds sounds;
-    sounds.playGameOverMusic();
+    if (settings.isMusicOn())
+        sounds.playGameOverMusic();
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {

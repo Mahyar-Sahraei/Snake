@@ -66,7 +66,7 @@ Settings::Settings(float width, float length, std::string font) {
     help.setFont(this->font);
     textPosition = sf::Vector2f(70, 620);
     help.setPosition(textPosition);
-    help.setString("Help: The blu snake\nmove whit w,a,s,d and red\nsnake move whit Up,Down,Left,Right");
+    help.setString("Help: The red snake\nmove whit w,a,s,d and blue\nsnake move whit Up,Down,Left,Right");
     help.setCharacterSize(20);
 }
 
