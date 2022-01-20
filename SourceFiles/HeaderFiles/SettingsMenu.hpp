@@ -13,7 +13,7 @@ private:
     sf::Font font;
     sf::Text texts[SETTINGS_OPTIONS * 2 + 1];
     sf::Text soundTitle,speedTitle;
-    sf::Text exit;
+    sf::Text help;
     sf::Texture backGroundTexture;
     sf::RectangleShape backGround;
     int selectedItem{1},selectedSpeed{1},selectedSound{3};

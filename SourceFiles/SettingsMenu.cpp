@@ -62,6 +62,12 @@ Settings::Settings(float width, float length, std::string font) {
     texts[4].setString("Off");
     texts[4].setCharacterSize(30);
 
+    help.setFillColor(sf::Color::White);
+    help.setFont(this->font);
+    textPosition = sf::Vector2f(70, 620);
+    help.setPosition(textPosition);
+    help.setString("Help: The blu snake\nmove whit w,a,s,d and red\nsnake move whit Up,Down,Left,Right");
+    help.setCharacterSize(20);
 }
 
 void Settings::moveUp() {
@@ -172,6 +178,7 @@ void Settings::drawWindow(sf::RenderWindow &window) {
     window.draw(backGround);
     window.draw(speedTitle);
     window.draw(soundTitle);
+    window.draw(help);
     for (int i = 0; i < SETTINGS_OPTIONS * 2 + 1; ++i) {
         window.draw(texts[i]);
     }

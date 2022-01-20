@@ -5,11 +5,10 @@
 #include "HeaderFiles/Sounds.hpp"
 #include "HeaderFiles/SettingsMenu.hpp"
 
-void win::mainMenu(sf::RenderWindow &window, Settings &settings) {
+void win::mainMenu(sf::RenderWindow &window, Settings &settings,Sounds &sounds) {
     Menu menu(window.getSize().x, window.getSize().y, 
         "menuBackGround.png", "menuFont.ttf", "Snake!", "Start", "Exit", 0);
     menu.drawWindow(window);
-    Sounds sounds;
     sounds.playMenuMusic();
     while (window.isOpen()) {
         sf::Event event;
@@ -29,10 +28,10 @@ void win::mainMenu(sf::RenderWindow &window, Settings &settings) {
                         switch (menu.getPressedItem()) {
                             case 0:
                                 sounds.pauseMenuMusic();
-                                return startGame(window,settings);
+                                return startGame(window, settings, sounds);
                                 break;
                             case 1:
-                                settingGame(window,settings);
+                                settingGame(window,settings,sounds,0);
                                 break;
                             case 2:
                                 window.close();
@@ -47,8 +46,8 @@ void win::mainMenu(sf::RenderWindow &window, Settings &settings) {
     }
 }
 
-void win::settingGame(sf::RenderWindow &window, Settings &settings) {
-    window.setFramerateLimit(15);
+void win::settingGame(sf::RenderWindow &window, Settings &settings,Sounds &sounds,int whichMenu) {
+    //Settings settings(window.getSize().x,window.getSize().y);
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -72,13 +71,16 @@ void win::settingGame(sf::RenderWindow &window, Settings &settings) {
                     case sf::Keyboard::Return:
                         switch (settings.getPressedItem()) {
                             case 0:
+                                settings.moveLeft();
                                 return;
                                 break;
                             case 1:
                                 settings.setFPS(4);
+                                settings.selectFastSpeed();
                                 break;
                             case 2:
                                 settings.setFPS(2);
+                                settings.selectSlowSpeed();
                                 break;
                             case 3:
                                 settings.toggleMusic(true);
@@ -96,7 +98,7 @@ void win::settingGame(sf::RenderWindow &window, Settings &settings) {
     }
 }
 
-void win::startGame(sf::RenderWindow &window, Settings &settings) {
+void win::startGame(sf::RenderWindow &window, Settings &settings,Sounds &sounds) {
     Board board;
     Initializer initializer; 
 	std::pair<sf::Vector2f, sf::Vector2f> snakesPos = 
@@ -106,7 +108,6 @@ void win::startGame(sf::RenderWindow &window, Settings &settings) {
 	Tiles map;
     Dir tmpSnake1Dir = snake1.direction, tmpSnake2Dir = snake2.direction;
 	map.load(board.getStateMap());
-    Sounds sounds;
     if (settings.isMusicOn())
         sounds.playGameMusic();
     window.setFramerateLimit(settings.getFps());
@@ -152,15 +153,15 @@ void win::startGame(sf::RenderWindow &window, Settings &settings) {
         }
 		if (!snake1.isAlive() && !snake2.isAlive() || snake1.head == snake2.head) {
             sounds.pauseGameMusic();
-            return endGame(window, "Draw.",settings);
+            return endGame(window, "Draw.",settings,sounds);
         }
         else if (!snake1.isAlive()){
             sounds.pauseGameMusic();
-            return endGame(window, "Player 2 won!",settings);
+            return endGame(window, "Player 2 won!",settings,sounds);
         }
         else if (!snake2.isAlive()) {
             sounds.pauseGameMusic();
-            return endGame(window, "Player 1 won!",settings);
+            return endGame(window, "Player 1 won!",settings,sounds);
         }
 		board.reset();
 		board.putSnake(snake1.body, Obj::Snake1);
@@ -173,7 +174,7 @@ void win::startGame(sf::RenderWindow &window, Settings &settings) {
 	}
 }
 
-void win::endGame(sf::RenderWindow &window, std::string result, Settings &settings) {
+void win::endGame(sf::RenderWindow &window, std::string result, Settings &settings, Sounds& sound) {
     window.setFramerateLimit(15);
     Menu menu(window.getSize().x, window.getSize().y, 
         "gameOverBackGround.png", "menuFont.ttf", result, "Restart", "Exit" , 200);
@@ -197,10 +198,10 @@ void win::endGame(sf::RenderWindow &window, std::string result, Settings &settin
                         switch (menu.getPressedItem()) {
                             case 0:
                                 sounds.pauseGameOverMusic();
-                                return startGame(window,settings);
+                                return startGame(window,settings,sounds);
                                 break;
                             case 1:
-                                settingGame(window,settings);
+                                settingGame(window,settings,sounds,1);
                                 break;
                             case 2:
                                 window.close();
