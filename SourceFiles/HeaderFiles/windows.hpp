@@ -6,8 +6,8 @@
 #include "Sounds.hpp"
 
 namespace win {
-    void mainMenu(sf::RenderWindow& window, Settings &settings,Sounds &sounds);
-    void settingGame(sf::RenderWindow& window, Settings &settings,Sounds &sounds,int whichMenu);
-    void startGame(sf::RenderWindow& window, Settings &settings,Sounds &sounds);
-    void endGame(sf::RenderWindow& window, std::string result, Settings &settings,Sounds &sounds);
+    void mainMenu(sf::RenderWindow& window, Settings& settings, Sounds& sounds);
+    void settingGame(sf::RenderWindow& window, Settings& settings, Sounds& sounds, int whichMenu);
+    void startGame(sf::RenderWindow& window, Settings& settings, Sounds& sounds);
+    void endGame(sf::RenderWindow& window, std::string result, Settings& settings, Sounds& sounds);
 }

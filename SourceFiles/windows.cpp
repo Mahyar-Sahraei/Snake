@@ -116,7 +116,6 @@ void win::startGame(sf::RenderWindow &window, Settings &settings,Sounds &sounds)
 	Snake snake2(Obj::Snake2, snakesPos.second);
 	Tiles map;
     Dir tmpSnake1Dir = snake1.direction, tmpSnake2Dir = snake2.direction;
-	map.load(board.getStateMap());
     if (settings.isMusicOn())
         sounds.playGameMusic();
     window.setFramerateLimit(settings.getFps());
