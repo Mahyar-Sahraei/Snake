@@ -1,9 +1,6 @@
 #include "HeaderFiles/snake.hpp"
-#include "HeaderFiles/board.hpp"
 #include "HeaderFiles/Tiles.hpp"
 #include "HeaderFiles/windows.hpp"
-#include "HeaderFiles/Sounds.hpp"
-#include "HeaderFiles/SettingsMenu.hpp"
 
 void win::mainMenu(sf::RenderWindow &window, Settings &settings,Sounds &sounds) {
     Menu menu(window.getSize().x, window.getSize().y, 
