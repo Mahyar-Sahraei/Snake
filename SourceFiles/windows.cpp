@@ -84,9 +84,9 @@ void win::settingGame(sf::RenderWindow &window, Settings &settings,Sounds &sound
                                 settings.selectSlowSpeed();
                                 break;
                             case 3:
-                                if (whichMenu == 0)
+                                if (whichMenu == 0 && !settings.isMusicOn())
                                     sounds.playMenuMusic();
-                                if (whichMenu == 1)
+                                if (whichMenu == 1 && !settings.isMusicOn())
                                     sounds.playGameOverMusic();
                                 settings.toggleMusic(true);
                                 settings.selectSoundOn();
